@@ -18,4 +18,11 @@ public class EmployeeService {
         List<Employees> employeeList = employeeRepository.findAll();
         return employeeList;
     }
+
+    public Employees addEmployee(Employees employees) {
+        System.out.println("inside the add employee method");
+        Employees savedEmployee = employeeRepository.save(employees);
+        System.out.println("savedEmployee id = " + savedEmployee.getId());
+        return savedEmployee;
+    }
 }

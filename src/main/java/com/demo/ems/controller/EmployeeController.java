@@ -3,10 +3,7 @@ package com.demo.ems.controller;
 import com.demo.ems.model.Employees;
 import com.demo.ems.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +29,14 @@ public class EmployeeController {
         System.out.println("employeeList = " + employeeList);
         return employeeList;
 
+    }
+
+    //create post method to add employee
+    @PostMapping("/create")
+    public String addEmployee(@RequestBody Employees employees) {
+        System.out.println("inside the add employee method");
+        employeeService.addEmployee(employees);
+        return "Employee Created Successfully. id = " + employees.getId();
     }
 
 }
