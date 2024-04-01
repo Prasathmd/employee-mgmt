@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/api/v1")
@@ -37,6 +38,20 @@ public class EmployeeController {
         System.out.println("inside the add employee method");
         employeeService.addEmployee(employees);
         return "Employee Created Successfully. id = " + employees.getId();
+    }
+
+    //create a get method to get employee by id
+    @GetMapping("/employee/{id}")
+    public Employees getEmployeeById(@PathVariable Integer id) {
+        System.out.println("the input value for edit employee ="+id);
+        return employeeService.getEmployeeById(id);
+    }
+
+    //create a put method to update employee by id
+    @PutMapping("/updateEmployee/{id}")
+    public Employees updateEmployee(@PathVariable Integer id, @RequestBody Employees employees) {
+        System.out.println("the input value for edit employee ="+id);
+        return employeeService.updateEmployee(id, employees);
     }
 
 }

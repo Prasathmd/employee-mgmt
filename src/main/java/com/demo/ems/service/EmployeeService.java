@@ -25,4 +25,22 @@ public class EmployeeService {
         System.out.println("savedEmployee id = " + savedEmployee.getId());
         return savedEmployee;
     }
+
+    public Employees getEmployeeById(Integer id) {
+        System.out.println("the input value in Service for edit employee =" + id);
+        Employees employee = employeeRepository.findById(id).get();
+        System.out.println(employee);
+        return employee;
+    }
+
+    public Employees updateEmployee(Integer id, Employees employees) {
+        System.out.println("the input value in Service for update employee =" + id);
+        Employees employee = employeeRepository.findById(id).get();
+        employee.setFirstName(employees.getFirstName());
+        employee.setLastName(employees.getLastName());
+        employee.setEmail(employees.getEmail());
+        Employees updatedEmployee = employeeRepository.save(employee);
+        System.out.println(updatedEmployee);
+        return updatedEmployee;
+    }
 }
